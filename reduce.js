@@ -28,7 +28,7 @@ const users = [
 
 // o/p should be {24:2,60:1,32:1}
 
-const ageObj = users.reduce(function(acc,curr){
+const ageObj = users.reduce((acc,curr)=>{
    if(acc[curr.age]){
      acc[curr.age]= ++acc[curr.age]
    }
@@ -48,3 +48,64 @@ const belowThirtyUsersName = users.reduce((acc,curr)=>{
     return acc
 },[])
 console.log(belowThirtyUsersName);
+
+
+function totalVotes(arr) {
+  return arr.reduce((totalVoters,voter)=>{
+    if(voter.voted){
+        totalVoters++
+    }
+    return totalVoters;
+  },0)    
+}
+
+var voters = [
+   {name:'Bob' , age: 30, voted: true},
+   {name:'Jake' , age: 32, voted: true},
+   {name:'Kate' , age: 25, voted: false},
+   {name:'Sam' , age: 20, voted: false},
+   {name:'Phil' , age: 21, voted: true},
+   {name:'Ed' , age:55, voted:true},
+   {name:'Tami' , age: 54, voted:true},
+   {name: 'Mary', age: 31, voted: false},
+   {name: 'Becky', age: 43, voted: false},
+   {name: 'Joey', age: 41, voted: true},
+   {name: 'Jeff', age: 30, voted: true},
+   {name: 'Zack', age: 19, voted: false}
+];
+
+
+
+function shoppingSpree(arr) {
+   return arr.reduce((totalPrice,model)=>{
+     return totalPrice+=model.price
+    },0)
+}
+
+var wishlist = [
+   { title: "Tesla Model S", price: 90000 },
+   { title: "4 carat diamond ring", price: 45000 },
+   { title: "Fancy hacky Sack", price: 5 },
+   { title: "Gold fidgit spinner", price: 2000 },
+   { title: "A second Tesla Model S", price: 90000 }
+];
+
+console.log(shoppingSpree(wishlist));
+
+function flatten(arr) {
+  return arr.reduce((flatArr,ele)=>{
+    
+    // flatArr.push(...ele)
+    newArr = flatArr.concat(ele);
+    console.log("new",newArr);
+    return newArr
+  },[])    
+}
+
+var arrays = [
+   ["1", "2", "3"],
+   [true],
+   [4, 5, 6]
+];
+
+console.log(flatten(arrays)); 
